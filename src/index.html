@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="YCMath">
+  <head>
+    <title>地狱魔术师</title>
+    <meta charset='utf-8'>
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
+            ng-click="menuCollapsed = ! menuCollapsed">
+            <span class="sr-only">导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand">
+            HellMagic
+          </div>
+        </div>
+        <div class="collapse navbar-collapse" collapse="menuCollapsed">
+          <ul class="nav navbar-nav">
+            <li ui-sref-active="active">
+              <a href ui-sref="home">
+                <i class="fa fa-home"></i>
+                地狱
+              </a>
+            </li>
+            <li ui-sref-active="active">
+              <a href ui-sref="about">
+                <i class="fa fa-info-circle"></i>
+                第一层
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="fa fa-book"></i>
+                第二层
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="fa fa-github-alt"></i>
+                ...[电梯]
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <i class="fa fa-comments"></i>
+                第十八层
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" ng-view></div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">    
+          <p>
+              这是演习，重复一遍，这次只是演习！！！     
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
