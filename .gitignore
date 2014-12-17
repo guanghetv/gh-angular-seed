@@ -1,2 +1,6 @@
 gruntfile.js
-node_modules
+
+bin/
+build/
+vendor/
+node_modules/
