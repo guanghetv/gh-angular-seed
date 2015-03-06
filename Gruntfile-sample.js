@@ -146,19 +146,6 @@ module.exports = function ( grunt ) {
 			}
 		},
 
-/*		ngmin: {
-			compile: {
-				files: [
-					{
-						src: [ '<%= app_files.commonjs %>', '<%= app_files.routejs %>', '<%= app_files.appjs %>', '<%= app_files.mainjs %>' ],
-						cwd: '<%= build_dir %>',
-						dest: '<%= build_dir %>',
-						expand: true
-					}
-				]
-			}
-		},*/
-
 		ngAnnotate: {
 			compile: {
 				files: [
