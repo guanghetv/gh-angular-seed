@@ -37,6 +37,8 @@ b.当需要通过bower添加第三方的js lib的时候一定要在build.config.
 
 c.不要动index.html里的内容
 
+d.如果在vendor种直接引用了非规范的js文件，请一定保证此js文件使用了规范的angular inline injection方式，确保能在Production环境下使用
+
 ******************************************************************************************
 
 ##特点： :thumbsup:
