@@ -1,5 +1,5 @@
 module.exports = function ( grunt ) {
-	
+
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat');
@@ -16,7 +16,7 @@ module.exports = function ( grunt ) {
 		pkg: grunt.file.readJSON("package.json"),
 
 		meta: {
-			banner: 
+			banner:
 				'/**\n' +
 				' * <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
 				' * <%= pkg.homepage %>\n' +
@@ -26,13 +26,13 @@ module.exports = function ( grunt ) {
 		bump: {
 			options: {
 				files: [
-					"package.json", 
+					"package.json",
 					"bower.json"
 				],
 				commit: false,
 				commitMessage: 'chore(release): v%VERSION%',
 				commitFiles: [
-					"package.json", 
+					"package.json",
 					"client/bower.json"
 				],
 				createTag: false,
@@ -41,34 +41,34 @@ module.exports = function ( grunt ) {
 				push: false,
 				pushTo: 'origin'
 			}
-		},    
+		},
 
-		clean: [ 
-			'<%= build_dir %>', 
+		clean: [
+			'<%= build_dir %>',
 			'<%= compile_dir %>'
 		],
 
 		copy: {
 			build_app_assets: {
 				files: [
-					{ 
+					{
 						src: [ '**' ],
 						dest: '<%= build_dir %>/assets/',
 						cwd: 'src/assets',
 						expand: true
 					}
-			 ]   
+			 ]
 			},
 			build_vendor_assets: {
 				files: [
-					{ 
+					{
 						src: [ '<%= vendor_files.assets %>' ],
 						dest: '<%= build_dir %>/assets/',
 						cwd: '.',
 						expand: true,
 						flatten: true
 					}
-				]   
+				]
 			},
 			build_appjs: {
 				files: [
@@ -131,16 +131,16 @@ module.exports = function ( grunt ) {
 				options: {
 					banner: '<%= meta.banner %>'
 				},
-				src: [ 
-					'<%= vendor_files.js %>', 
-					'module.prefix', 
+				src: [
+					'<%= vendor_files.js %>',
+					'module.prefix',
 					'<%= compile_js_files.commonjs %>',
-					'<%= compile_js_files.routejs %>', 
-					'<%= compile_js_files.appjs %>', 
+					'<%= compile_js_files.routejs %>',
+					'<%= compile_js_files.appjs %>',
 					'<%= compile_js_files.mainjs %>',
-					'<%= html2js.app.dest %>', 
-					'<%= html2js.common.dest %>', 
-					'module.suffix' 
+					'<%= html2js.app.dest %>',
+					'<%= html2js.common.dest %>',
+					'module.suffix'
 				],
 				dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
 			}
@@ -170,7 +170,7 @@ module.exports = function ( grunt ) {
 					}
 				]
 			}
-		},		
+		},
 
 		uglify: {
 			compile: {
@@ -224,8 +224,8 @@ module.exports = function ( grunt ) {
 				src: [
 					'<%= vendor_files.js %>',
 					'<%= build_js_files.commonjs %>',
-					 '<%= build_js_files.routejs %>', 
-					 '<%= build_js_files.appjs %>', 
+					 '<%= build_js_files.routejs %>',
+					 '<%= build_js_files.appjs %>',
 					 '<%= build_js_files.mainjs %>',
 					'<%= html2js.common.dest %>',
 					'<%= html2js.app.dest %>',
@@ -258,14 +258,14 @@ module.exports = function ( grunt ) {
 			},
 
 			jssrc: {
-				files: [ 
+				files: [
 					'<%= app_files.commonjs %>', '<%= app_files.routejs %>', '<%= app_files.appjs %>', '<%= app_files.mainjs %>'
 				],
-				tasks: [ 'copy:build_appjs' ]
+				tasks: [ 'copy:build_appjs', 'index:build' ]
 			},
 
 			assets: {
-				files: [ 
+				files: [
 					'src/assets/**/*'
 				],
 				tasks: [ 'copy:build_app_assets', 'copy:build_vendor_assets' ]
@@ -277,8 +277,8 @@ module.exports = function ( grunt ) {
 			},
 
 			tpls: {
-				files: [ 
-					'<%= app_files.atpl %>', 
+				files: [
+					'<%= app_files.atpl %>',
 					'<%= app_files.ctpl %>'
 				],
 				tasks: [ 'html2js' ]
@@ -330,7 +330,7 @@ module.exports = function ( grunt ) {
 			return file.replace( dirRE, '' );
 		});
 
-		grunt.file.copy('src/index.html', this.data.dir + '/index.html', { 
+		grunt.file.copy('src/index.html', this.data.dir + '/index.html', {
 			process: function ( contents, path ) {
 				return grunt.template.process( contents, {
 					data: {
